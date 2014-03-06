@@ -13,17 +13,18 @@ int getIndiceEquilibrio(int* v, int n){
 			soma_infeior += v[j];
 		}
 		int soma_superior = 0;
-		for(int j = 0; j < i; j++){
+		for(int j = i+1; j < n; j++){
 			//SOMA SUPERIOR
 			soma_superior += v[j];
 		}
 		if(soma_superior == soma_infeior){
+			printf("indice: %d\n",i);
 			return i;
 		}
-		return -1;
 	}
+	return -1;
 
-
+/*
 	if(n == 3){
 		if(v[0] == v[2]){
 			return 1;
@@ -45,10 +46,8 @@ int getIndiceEquilibrio(int* v, int n){
 			}
 		}
 	}
+*/
 
-
-
-	return 0;
 }
 
 int teste_basico(){
@@ -71,6 +70,11 @@ int teste_tres_elementos(){
 	int vetor4[N] = {-1, -2, 2};
 	_assert( getIndiceEquilibrio(vetor4, 3) == 0);
 
+	int vetor5[N] = {1, 10, 1};
+	_assert( getIndiceEquilibrio(vetor5, 3) == 1);
+
+	int vetor6[N] = {1, 10, 1, 10};
+	_assert( getIndiceEquilibrio(vetor6, 4) == -1);
 
 	return 0;
 }

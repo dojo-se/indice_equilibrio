@@ -23,11 +23,29 @@ int isIndiceEquilibrio(int* v, int n, int indice){
 
 int getIndiceEquilibrio(int* v, int n){
 
-	for(int i = 0; i < n; i++ ){
+	/*for(int i = 0; i < n; i++ ){
 		if(isIndiceEquilibrio(v, n, i)){
 			return i;
 		}
+	}*/
+
+	int soma_inferior = 0;
+	int soma_superior = somaVetor(v, 1, n);
+
+	if(soma_inferior == soma_superior){
+		return 0;
 	}
+
+	for(int i=1; i<n; i++){
+		soma_inferior += v[i-1];
+		soma_superior -= v[i];
+
+		if(soma_inferior == soma_superior){
+			return i;
+		}
+	}
+
+
 	return -1;
 
 }

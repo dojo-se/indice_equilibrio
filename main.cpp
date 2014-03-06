@@ -8,9 +8,25 @@ int getIndiceEquilibrio(int* v, int n){
 		if(v[0] == v[2]){
 			return 1;
 		} else {
-			return -1;
+			if (v[0]+v[1] == 0)
+			{
+				return 2;
+			}
+			else
+			{
+				if (v[1]+v[2]== 0)
+				{
+					return 0;
+				}
+				else
+				{
+					return -1;
+				}
+			}
 		}
 	}
+
+
 
 	return 0;
 }
@@ -28,6 +44,13 @@ int teste_tres_elementos(){
 
 	int vetor2[N] = {1, 2, 2};
 	_assert( getIndiceEquilibrio(vetor2, 3) == -1);
+
+	int vetor3[N] = {-1, 1, 2};
+	_assert( getIndiceEquilibrio(vetor3, 3) == 2);
+
+	int vetor4[N] = {-1, -2, 2};
+	_assert( getIndiceEquilibrio(vetor4, 3) == 0);
+
 
 	return 0;
 }

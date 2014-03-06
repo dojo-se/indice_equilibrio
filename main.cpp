@@ -3,7 +3,27 @@
 
 #define N 100
 
+
 int getIndiceEquilibrio(int* v, int n){
+
+	for(int i = 0; i < n; i++ ){
+		int soma_infeior = 0;
+		for(int j = 0; j < i; j++){
+			//SOMA INFERIOR
+			soma_infeior += v[j];
+		}
+		int soma_superior = 0;
+		for(int j = 0; j < i; j++){
+			//SOMA SUPERIOR
+			soma_superior += v[j];
+		}
+		if(soma_superior == soma_infeior){
+			return i;
+		}
+		return -1;
+	}
+
+
 	if(n == 3){
 		if(v[0] == v[2]){
 			return 1;

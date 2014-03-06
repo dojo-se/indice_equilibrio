@@ -3,50 +3,32 @@
 
 #define N 100
 
+int somaVetor(int* v, int limite_inferior, int limite_superior){
+	int soma = 0;
+	for(int j = limite_inferior; j < limite_superior; j++){
+		soma += v[j];
+	}
+
+	return soma;
+}
+
+int isIndiceEquilibrio(int* v, int n, int indice){
+
+	int soma_infeior = somaVetor(v, 0, indice);
+	int soma_superior = somaVetor(v, indice+1, n);
+
+	return soma_superior == soma_infeior;
+
+}
 
 int getIndiceEquilibrio(int* v, int n){
 
 	for(int i = 0; i < n; i++ ){
-		int soma_infeior = 0;
-		for(int j = 0; j < i; j++){
-			//SOMA INFERIOR
-			soma_infeior += v[j];
-		}
-		int soma_superior = 0;
-		for(int j = i+1; j < n; j++){
-			//SOMA SUPERIOR
-			soma_superior += v[j];
-		}
-		if(soma_superior == soma_infeior){
-			printf("indice: %d\n",i);
+		if(isIndiceEquilibrio(v, n, i)){
 			return i;
 		}
 	}
 	return -1;
-
-/*
-	if(n == 3){
-		if(v[0] == v[2]){
-			return 1;
-		} else {
-			if (v[0]+v[1] == 0)
-			{
-				return 2;
-			}
-			else
-			{
-				if (v[1]+v[2]== 0)
-				{
-					return 0;
-				}
-				else
-				{
-					return -1;
-				}
-			}
-		}
-	}
-*/
 
 }
 
@@ -79,9 +61,16 @@ int teste_tres_elementos(){
 	return 0;
 }
 
+int teste_dojo_puzzle(){
+	// A[0] = -7 A[1] = 1 A[2] = 5 A[3] = 2 A[4] = -4 A[5] = 3 A[6] = 0
+	int vetor1[N] = {-7, 1, 5, 2, -4, 3, 0};
+	_assert( getIndiceEquilibrio(vetor1, 7) == 3);
+}
+
 int todos_testes() {
 	_verify(teste_basico);
 	_verify(teste_tres_elementos);
+	_verify(teste_dojo_puzzle);
 	
 	return 0;
 }

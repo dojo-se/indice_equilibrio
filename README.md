@@ -31,10 +31,6 @@ Especialista: Fernando Almeida
 
 Funcionando :-)
 
-## E cadê o código?
-
-[Tá aqui no GitHub!](https://github.com/dojo-se/indice_equilibrio)
-
 ## Links úteis
 
 [Nossa lista de discussão](https://groups.google.com/forum/?fromgroups#!forum/dojo-se)
